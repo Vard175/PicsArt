@@ -62,6 +62,5 @@ public class ArrayTasks {
             singleNum^=arr[i];
         }
         System.out.println(singleNum);
-
     }
 }
