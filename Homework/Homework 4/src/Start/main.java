@@ -4,7 +4,7 @@ import Humans.Writer;
 
 import java.util.SortedMap;
 
-public class main {
+public class Main {
     public static void main(String[] args) {
         // Bubble Sort Implementation 1
         int[] arr = {1, 0, -7, 4, 2, -68};
