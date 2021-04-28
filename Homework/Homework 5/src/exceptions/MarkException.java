@@ -1,4 +1,4 @@
-package exception;
+package exceptions;
 
 public class MarkException extends Exception{
     private float mark;

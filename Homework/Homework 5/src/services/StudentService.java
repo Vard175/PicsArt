@@ -1,6 +1,6 @@
-package service;
+package services;
 
-import exception.MarkException;
+import exceptions.MarkException;
 import model.Student;
 
 public class StudentService {
@@ -19,7 +19,7 @@ public class StudentService {
 
     public static void printFullNames(String path, Student[] students) {
         for (Student s : students) {
-            FileService.write(path, "\n" + s.getFirstName() + s.getLastName());
+            FileService.write(path, "\n" + s.getFirstName() + " " + s.getLastName());
         }
     }
 
@@ -41,7 +41,7 @@ public class StudentService {
 
     public static void printStudentInfoWithGivenMinMark(String path, Student[] students, float minMark) {
         for (Student s : students) {
-            if (s.getMark() == 50.4) {
+            if (s.getMark() == minMark) {
                 s.printInfo(path);
             }
         }
@@ -58,8 +58,8 @@ public class StudentService {
                 }
             }
         }
-        if(oldest==null)
-            FileService.write(path,"there are no males");
+        if (oldest == null)
+            FileService.write(path, "there are no males");
         else
             oldest.printInfo(path);
     }

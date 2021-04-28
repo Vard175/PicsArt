@@ -1,7 +1,7 @@
 package model;
 
-import exception.*;
-import service.FileService;
+import exceptions.*;
+import services.FileService;
 
 public class Student {
     private String firstName;
@@ -20,7 +20,7 @@ public class Student {
     }
 
     public void setFirstName(String firstName) {
-        if(!firstName.matches("[A-Z][a-z]+"))
+        if (!firstName.matches("[A-Z][a-z]+"))
             throw new FirstNameException();
         this.firstName = firstName;
     }
@@ -30,7 +30,7 @@ public class Student {
     }
 
     public void setLastName(String lastName) {
-        if(!lastName.matches("[A-Z][a-z]+"))
+        if (!lastName.matches("[A-Z][a-z]+"))
             throw new LastNameException();
         this.lastName = lastName;
     }
@@ -40,7 +40,7 @@ public class Student {
     }
 
     public void setYear(int year) {
-        if(year<0){
+        if (year < 0) {
             throw new YearException(year);
         }
         this.year = year;
@@ -51,7 +51,7 @@ public class Student {
     }
 
     public void setGender(char gender) {
-        if(gender!='m' && gender!='f')
+        if (gender != 'm' && gender != 'f')
             throw new GenderException();
         this.gender = gender;
     }
@@ -60,20 +60,20 @@ public class Student {
         return mark;
     }
 
-    public void setMark(float mark) throws MarkException{
-        if(mark<0)
+    public void setMark(float mark) throws MarkException {
+        if (mark < 0)
             throw new MarkException(mark);
         this.mark = mark;
     }
 
-    public void printInfo(String path){
-        FileService.write(path,"------------------");
-        FileService.write(path,"\n First name: "+ getFirstName());
-        FileService.write(path,"\nLast name: "+ getLastName());
-        FileService.write(path,"\nYear: "+ getYear());
-        String gen=getGender()=='m'?"male":"female";
-        FileService.write(path,"\nGender: "+ gen);
-        FileService.write(path,"\nMark: "+ getMark());
-        FileService.write(path,"\n------------------");
+    public void printInfo(String path) {
+        FileService.write(path, "\n------------------");
+        FileService.write(path, "\n First name: " + getFirstName());
+        FileService.write(path, "\nLast name: " + getLastName());
+        FileService.write(path, "\nYear: " + getYear());
+        String gen = getGender() == 'm' ? "male" : "female";
+        FileService.write(path, "\nGender: " + gen);
+        FileService.write(path, "\nMark: " + getMark());
+        FileService.write(path, "\n------------------");
     }
 }

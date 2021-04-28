@@ -1,8 +1,8 @@
 package main;
 
 import model.Student;
-import service.FileService;
-import service.StudentService;
+import services.FileService;
+import services.StudentService;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -10,34 +10,33 @@ import java.util.Scanner;
 public class StudentInfoManipulations {
     public static void main(String[] args) {
 
-        String readPath="C:\\Users\\Dell\\Documents\\input22.txt";
-        String[] studentInfoTemp={""};
-//        String[][] studentInfo=new String[studentInfoTemp.length][];
-//        Student[] students=new Student[studentInfo.length];
+        String readPath = "C:\\Users\\Dell\\Documents\\input22.txt";
+        String[] studentInfoTemp = {""};
 
         try {
-           studentInfoTemp= FileService.read(readPath);
+            studentInfoTemp = FileService.read(readPath);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String[][] studentInfo=new String[studentInfoTemp.length][];
 
-        for(int i=0;i<studentInfo.length;i++)
-                studentInfo[i]=studentInfoTemp[i].split(",");
+       String[][] studentInfo = new String[studentInfoTemp.length][];
 
-        Student[] students=new Student[studentInfo.length];
+        for (int i = 0; i < studentInfo.length; i++)
+            studentInfo[i] = studentInfoTemp[i].split(",");
+
+        Student[] students = new Student[studentInfo.length];
 
         for (int i = 0; i < students.length; i++)
-            students[i]=StudentService.createStudent(studentInfo[i]);
+            students[i] = StudentService.createStudent(studentInfo[i]);
 
-        Scanner scanner=new Scanner(System.in);
-        System.out.println("Enter path of the folder");
-        String filePath=scanner.next();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter path of the folder (format: folder//..folder//)");
+        String filePath = scanner.next();
         System.out.println("Enter file name with extension");
-        String fileName=scanner.next();
-        String path=filePath+fileName;
+        String fileName = scanner.next();
+        String path = filePath + fileName;
         try {
-            FileService.createFile(filePath,fileName);
+            FileService.createFile(filePath, fileName);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -57,24 +56,33 @@ public class StudentInfoManipulations {
             int command = scanner.nextInt();
             switch (command) {
                 case 1:
+                    FileService.write(path, "\n1. Print full names of students");
                     StudentService.printFullNames(path, students);
                     break;
                 case 2:
+                    FileService.write(path, "\n2. Print all male students \"");
                     StudentService.printMaleStudents(path, students);
                     break;
                 case 3:
+                    FileService.write(path, "\n3. Print all female students who has mark greater then 50.4 ");
                     StudentService.printFemalesMarkGreater50point4(path, students);
                     break;
                 case 4:
-                    StudentService.printStudentInfoWithGivenMinMark(path, students, 47.89f);
+                    System.out.println("Enter minMark");
+                    float minMark = scanner.nextFloat();
+                    FileService.write(path, "\n4. Print student information having the minimal mark");
+                    StudentService.printStudentInfoWithGivenMinMark(path, students, minMark);
                     break;
                 case 5:
+                    FileService.write(path, "\n5. Print oldest male student information");
                     StudentService.printOldestMaleStudent(path, students);
                     break;
                 case 6:
+                    FileService.write(path, "\n6. Print students sorted by mark");
                     StudentService.printSortedByMark(path, students);
                     break;
                 case 7:
+                    FileService.write(path, "\n7. Print female students sorted by year");
                     StudentService.printFemalesSortedbyYear(path, students);
                     break;
                 case 8:
