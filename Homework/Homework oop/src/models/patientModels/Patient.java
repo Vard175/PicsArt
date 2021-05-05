@@ -1,6 +1,9 @@
 package models.patientModels;
 
+import models.baseModels.Doctor;
 import models.baseModels.Human;
+import models.hospitalStaffModels.serviceStaffModels.LaboratoryWorker;
+import models.hospitalStaffModels.serviceStaffModels.Orderly;
 import services.FileService;
 
 public class Patient extends Human {
@@ -15,11 +18,20 @@ public class Patient extends Human {
         getMedicalCard().printInfo(path);
     }
 
-    //TODO: delete this / change to interact
     @Override
-    public void complain() {
-        //TODO: write in file
-        System.out.println("I'm not feeling good,I have " + getMedicalCard().getDisease().getSymptoms().get(0));
+    public void interact(Human human) {
+        if(human instanceof Doctor){
+            System.out.println("I'm not feeling good,I have " + getMedicalCard().getDisease().getSymptoms().get(0));
+        }
+        else if(human instanceof Patient){
+            System.out.println("Hey,nice to meet you,I am " + human.getName());
+        }
+        else if(human instanceof LaboratoryWorker){
+            System.out.println("I should take these tests");
+        }
+        else if(human instanceof Orderly){
+            System.out.println("Please,help me to get prepared for observation.");
+        }
     }
 
     public void tellHowFeels() {

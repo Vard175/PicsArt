@@ -30,6 +30,4 @@ public abstract class Staff extends Human {
 
     //TODO: check modifier after packaging
     public abstract void getPromoted();
-
-
 }

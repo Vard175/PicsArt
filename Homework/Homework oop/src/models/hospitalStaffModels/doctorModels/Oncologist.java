@@ -9,11 +9,11 @@ public class Oncologist extends Doctor {
     }
 
     @Override
-    public String diagnosePatient(Patient patient) {
+    public String observePatient(Patient patient) {
         //TODO:
         if(patient.getMedicalCard().getDisease().getSymptoms().contains("chest pain"))
             return  "You might have cancer";
         else
-            return super.diagnosePatient(patient);
+            return super.observePatient(patient);
     }
 }

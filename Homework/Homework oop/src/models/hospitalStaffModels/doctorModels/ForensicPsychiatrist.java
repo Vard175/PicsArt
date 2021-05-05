@@ -10,6 +10,15 @@ public class ForensicPsychiatrist extends Doctor implements Psychiatrist {
     }
 
     @Override
+    public String observePatient(Patient patient) {
+        //TODO:
+        if(patient.getMedicalCard().getDisease().getSymptoms().contains("self harm"))
+            return  "You might have suicidal thoughts";
+        else
+            return super.observePatient(patient);
+    }
+
+    @Override
     public void prescribeAntidepressants(Patient patient) {
         //TODO:
         System.out.println("Take this twice a week");

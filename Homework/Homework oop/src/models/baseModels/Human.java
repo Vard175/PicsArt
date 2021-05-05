@@ -3,17 +3,13 @@ package models.baseModels;
 import exceptions.*;
 import services.FileService;
 //TODO: question: where to write constructors getters setters functions..any better practices ?
-public abstract class Human {
+public abstract class Human implements Comparable<Human>{
     private String name;
     private String surname;
     private int age;
     private char gender;
 
-    //TODO: delete this method
-    public abstract void complain();
-
-    //TODO: doctor to doctor ... adn so on (with overloads)
- //   public abstract void interact(Human human);
+    public abstract void interact(Human human);
 
     public void printInfo(String path) {
            FileService.write(path, "\n------------------");
@@ -70,5 +66,10 @@ public abstract class Human {
         if (gender != 'm' && gender != 'f')
             throw new GenderException();
         this.gender = gender;
+    }
+
+    @Override
+    public int compareTo(Human o) {
+        return this.getAge()-o.getAge();
     }
 }
