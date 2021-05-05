@@ -1,15 +1,13 @@
 package services;
 
 import models.hospitalStaffModels.serviceStaffModels.LaboratoryWorker;
-import models.patientModels.MedicalCard;
-import models.patientModels.Patient;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class LaboratoryWorkerService {
 
-    public void workWithLabWorkers(Scanner s, String path, ArrayList<LaboratoryWorker> labWorkers) {
+    public static void workWithLabWorkers(Scanner s, String path, ArrayList<LaboratoryWorker> labWorkers) {
         boolean isMenuActive = true;
         while (isMenuActive) {
             System.out.println("Enter command number");
@@ -55,7 +53,7 @@ public class LaboratoryWorkerService {
         }
     }
 
-    public void getManualInput(Scanner s, String path, ArrayList<LaboratoryWorker> laboratoryWorkers) {
+    public static void getManualInput(Scanner s, String path, ArrayList<LaboratoryWorker> laboratoryWorkers) {
         StringBuilder sb = new StringBuilder();
         System.out.println("Enter name of the laboratory worker");
         sb.append(s.next());
@@ -72,7 +70,7 @@ public class LaboratoryWorkerService {
         createLabWorker(sb.toString(), path, laboratoryWorkers);
     }
 
-    public void createLabWorker(String information, String path, ArrayList<LaboratoryWorker> laboratoryWorkers) {
+    public static void createLabWorker(String information, String path, ArrayList<LaboratoryWorker> laboratoryWorkers) {
         String[] info = information.split(",");
         LaboratoryWorker labWorker = new LaboratoryWorker(info[0], info[1], Integer.parseInt(info[2]), info[3].charAt(0));
         laboratoryWorkers.add(labWorker);
@@ -80,7 +78,7 @@ public class LaboratoryWorkerService {
         labWorker.printInfo(path);
     }
 
-    public void workWithOneLabWorker(Scanner s, String path, LaboratoryWorker laboratoryWorker) {
+    public static void workWithOneLabWorker(Scanner s, String path, LaboratoryWorker laboratoryWorker) {
 //TODO: write body
     }
 

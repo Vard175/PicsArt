@@ -1,13 +1,12 @@
 package services;
 
-import models.hospitalStaffModels.serviceStaffModels.LaboratoryWorker;
 import models.hospitalStaffModels.serviceStaffModels.Orderly;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class OrderlyService {
-    public  void workWithOrderlies(Scanner s,String path, ArrayList<Orderly> orderlies){
+    public static void workWithOrderlies(Scanner s,String path, ArrayList<Orderly> orderlies){
             boolean isMenuActive = true;
             while (isMenuActive) {
                 System.out.println("Enter command number");
@@ -53,7 +52,7 @@ public class OrderlyService {
             }
         }
 
-        public void getManualInput(Scanner s, String path, ArrayList<Orderly> orderlies) {
+        public static void getManualInput(Scanner s, String path, ArrayList<Orderly> orderlies) {
             StringBuilder sb = new StringBuilder();
             System.out.println("Enter name of the laboratory worker");
             sb.append(s.next());
@@ -70,7 +69,7 @@ public class OrderlyService {
             cretaeOrderly(sb.toString(), path, orderlies);
         }
 
-        public void cretaeOrderly(String information, String path, ArrayList<Orderly> orderlies) {
+        public static void cretaeOrderly(String information, String path, ArrayList<Orderly> orderlies) {
             String[] info = information.split(",");
             Orderly orderly = new Orderly(info[0], info[1], Integer.parseInt(info[2]), info[3].charAt(0));
             orderlies.add(orderly);
@@ -78,7 +77,7 @@ public class OrderlyService {
             orderly.printInfo(path);
         }
 
-        public void workWithOneOrderly(Scanner s, String path, Orderly orderly) {
+        public static void workWithOneOrderly(Scanner s, String path, Orderly orderly) {
 //TODO: write body
         }
 

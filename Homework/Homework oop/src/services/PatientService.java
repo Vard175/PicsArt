@@ -1,21 +1,18 @@
 package services;
 
-import exceptions.DoctorException;
-import models.baseModels.Doctor;
-import models.hospitalStaffModels.doctorModels.*;
+import models.hospitalStaffModels.doctorModels.Cardiologist;
+import models.hospitalStaffModels.serviceStaffModels.LaboratoryWorker;
+import models.hospitalStaffModels.serviceStaffModels.Orderly;
 import models.patientModels.Disease;
 import models.patientModels.MedicalCard;
 import models.patientModels.Patient;
 
-import java.lang.reflect.Array;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-//TODO: QUESTION: may I use scanner here ? I think yes
 public class PatientService {
 
-    public void workWithPatient(Scanner s, String path, ArrayList<Patient> patients) {
+    public static void workWithPatients(Scanner s, String path, ArrayList<Patient> patients) {
         boolean isMenuActive = true;
         while (isMenuActive) {
             System.out.println("Enter command number");
@@ -59,7 +56,7 @@ public class PatientService {
             }
         }
     }
-    public void getManualInput(Scanner s,String path, ArrayList<Patient> patients){
+    public static void getManualInput(Scanner s,String path, ArrayList<Patient> patients){
         StringBuilder sb=new StringBuilder();
         System.out.println("Enter name of the patient");
         sb.append(s.next());
@@ -80,7 +77,7 @@ public class PatientService {
         createPatient(sb.toString(),createMedCard(s),path, patients);
     }
 
-    public void createPatient(String information,MedicalCard medCard,String path,ArrayList<Patient> patients){
+    public static void createPatient(String information,MedicalCard medCard,String path,ArrayList<Patient> patients){
         String[] info=information.split(",");
         Patient patient=new Patient(info[0],info[1],Integer.parseInt(info[2]),info[3].charAt(0));
         patient.setAttendingDoctor(info[4]);
@@ -90,7 +87,7 @@ public class PatientService {
         patient.printInfo(path);
     }
 
-    public MedicalCard createMedCard(Scanner s){
+    public static MedicalCard createMedCard(Scanner s){
 
         System.out.println("Enter last treatment patient got( - if you don't know)");
         String lastTreatment=s.next();
@@ -101,7 +98,7 @@ public class PatientService {
         return new MedicalCard(disease,isFeelingGood,lastTreatment);
     }
 
-    public Disease createDisease(Scanner s){
+    public static Disease createDisease(Scanner s){
         System.out.println("Enter disease name");
         String name=s.next().toLowerCase();
         System.out.println("Describe symptoms (format: symptom,symptom)");
@@ -127,7 +124,46 @@ public class PatientService {
         }
     }
 
-    public void workWithOnePatient(Scanner s,String path,Patient patient){
-//TODO: write body
+    public static void workWithOnePatient(Scanner s,String path,Patient patient){
+        boolean isMenuActive = true;
+        while (isMenuActive) {
+            System.out.println("Enter command number");
+            System.out.println("1. Print doctor's info");
+            System.out.println("2. Give doctor promotion");
+            System.out.println("3. Make doctor interact with patient");
+            System.out.println("4. Make doctor interact with other doctor");
+            System.out.println("5. Make doctor interact with other laboratory worker");
+            System.out.println("6. Make doctor interact with orderly");
+            System.out.println("7. Exit");
+
+            int command = s.nextInt();
+            switch (command) {
+                case 1:
+                    doctor.printInfo(path);
+                    break;
+                case 2:
+                    doctor.getPromoted(path);
+                    break;
+                case 3:
+                    doctor.interact(path, new Patient());
+                    break;
+                case 4:
+                    doctor.interact(path, new Cardiologist());
+                    break;
+                case 5:
+                    doctor.interact(path, new LaboratoryWorker());
+                    break;
+                case 6:
+                    doctor.interact(path, new Orderly());
+                    break;
+                case 7:
+                    isMenuActive = false;
+                    System.out.println("Chao");
+                    break;
+                default:
+                    System.out.println("Invalid command number");
+                    //TODO: գրել պատիենտի էս զիբիլիկնները ,ֆունկցիաներ գրել լաբի համար ու սանիտարի ու էս զիբիլիկը մեկ էլ
+            }
+        }
     }
 }

@@ -5,8 +5,6 @@ import models.hospitalStaffModels.serviceStaffModels.Orderly;
 import models.patientModels.Patient;
 import services.FileService;
 
-import java.util.Objects;
-
 public abstract class Doctor extends Staff {
     //TODO: check doctors methods
 
@@ -14,28 +12,25 @@ public abstract class Doctor extends Staff {
     private boolean isHeadDoctor;
 
     @Override
-    public void getPromoted() {
+    public void getPromoted(String path) {
         //TODO: write in file
         if (isHeadDoctor)
-            System.out.println("Thank you for promotion");
+            FileService.write(path, "\nThank you for promotion");
         else
             setHeadDoctor(true);
-            System.out.println("Thank you,now I'm a head of my department");
+        FileService.write(path, "\nThank you,now I'm a head of my department");
     }
 
     @Override
-    public void interact(Human human) {
-        if(human instanceof Doctor){
-            System.out.println("*tells doctor specific jokes *");
-        }
-        else if(human instanceof Patient){
-            observePatient((Patient) human);
-        }
-        else if(human instanceof LaboratoryWorker){
-            System.out.println("Send me analyze results as soon as possible");
-        }
-        else if(human instanceof Orderly){
-            System.out.println("Get prepare for monitoring the patient");
+    public void interact(String path, Human human) {
+        if (human instanceof Doctor) {
+            FileService.write(path, "\n*tells doctor specific jokes *");
+        } else if (human instanceof Patient) {
+            observePatient(path, (Patient) human);
+        } else if (human instanceof LaboratoryWorker) {
+            FileService.write(path, "\nSend me analyze results as soon as possible");
+        } else if (human instanceof Orderly) {
+            FileService.write(path, "\nGet prepared for monitoring the patient");
         }
     }
 
@@ -46,15 +41,13 @@ public abstract class Doctor extends Staff {
         FileService.write(path, "\n Is Head Doctor: " + (isHeadDoctor() ? "Yes" : "No"));
     }
 
-    public String observePatient(Patient patient) {
-        //TODO: write in file
-        return "Let's see...hmm..with this symptoms for further information you should see " + patient.getAttendingDoctor();
+    public void observePatient(String path, Patient patient) {
+        FileService.write(path, "\nLet's see what complains you've got");
     }
 
-    public static void fillLastTreatment(Patient patient, String treatment) {
-        patient.getMedicalCard().setLastTreatment(treatment);
+    public static void fillLastTreatment(String path, String treatment) {
+        FileService.write(path, "\nLast treatment" + treatment);
     }
-
 
     public String getDepartmentName() {
         return departmentName;
@@ -72,8 +65,9 @@ public abstract class Doctor extends Staff {
         isHeadDoctor = headDoctor;
     }
 
-    public Doctor(String name, String surname, int age,char gender) {
-        super(name, surname, age,gender);
+    public Doctor(String name, String surname, int age, char gender) {
+        super(name, surname, age, gender);
     }
+    public Doctor(){}
 
 }

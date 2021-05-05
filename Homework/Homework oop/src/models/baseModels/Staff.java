@@ -1,12 +1,13 @@
 package models.baseModels;
 
 import exceptions.SalaryException;
-import models.baseModels.Human;
 import services.FileService;
 
 public abstract class Staff extends Human {
 
     private int salary;
+
+    public abstract void getPromoted(String path);
 
     @Override
     public void printInfo(String path) {
@@ -19,15 +20,14 @@ public abstract class Staff extends Human {
     }
 
     public void setSalary(int salary) {
-        if(salary<0)
-            throw  new SalaryException(salary);
+        if (salary < 0)
+            throw new SalaryException(salary);
         this.salary = salary;
     }
 
-    public Staff(String name, String surname, int age,char gender) {
-        super(name, surname, age,gender);
+    public Staff(String name, String surname, int age, char gender) {
+        super(name, surname, age, gender);
     }
 
-    //TODO: check modifier after packaging
-    public abstract void getPromoted();
+    public Staff(){}
 }

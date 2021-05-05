@@ -2,31 +2,33 @@ package models.baseModels;
 
 import exceptions.*;
 import services.FileService;
+
 //TODO: question: where to write constructors getters setters functions..any better practices ?
-public abstract class Human implements Comparable<Human>{
+public abstract class Human implements Comparable<Human> {
     private String name;
     private String surname;
     private int age;
     private char gender;
 
-    public abstract void interact(Human human);
+    public abstract void interact(String path, Human human);
 
     public void printInfo(String path) {
-           FileService.write(path, "\n------------------");
-            FileService.write(path, "\n Name: " + getName());
-            FileService.write(path, "\n Surname: " + getSurname());
-            FileService.write(path, "\n Age: " + getAge());
-            String gen = getGender() == 'm' ? "male" : "female";
-            FileService.write(path, "\n Gender: " + gen);
-            FileService.write(path, "\n------------------");
+        FileService.write(path, "\n------------------");
+        FileService.write(path, "\n Name: " + getName());
+        FileService.write(path, "\n Surname: " + getSurname());
+        FileService.write(path, "\n Age: " + getAge());
+        String gen = getGender() == 'm' ? "male" : "female";
+        FileService.write(path, "\n Gender: " + gen);
+        FileService.write(path, "\n------------------");
     }
 
-    public Human(String name, String surname, int age,char gender) {
+    public Human(String name, String surname, int age, char gender) {
         setName(name);
         setSurname(surname);
         setAge(age);
         setGender(gender);
     }
+    public Human(){}
 
     public String getName() {
         return name;
@@ -70,6 +72,6 @@ public abstract class Human implements Comparable<Human>{
 
     @Override
     public int compareTo(Human o) {
-        return this.getAge()-o.getAge();
+        return this.getAge() - o.getAge();
     }
 }

@@ -1,6 +1,6 @@
 package exceptions;
 
-public class AgeException extends RuntimeException{
+public class AgeException extends RuntimeException {
     private int age;
 
     public AgeException(int age) {
@@ -9,6 +9,6 @@ public class AgeException extends RuntimeException{
 
     @Override
     public String toString() {
-        return "Age can't be negative: "+age;
+        return "Age can't be negative: " + age;
     }
 }

@@ -1,6 +1,6 @@
 package exceptions;
 
-public class SalaryException extends RuntimeException{
+public class SalaryException extends RuntimeException {
 
     private int salary;
 
@@ -10,6 +10,6 @@ public class SalaryException extends RuntimeException{
 
     @Override
     public String toString() {
-        return "Salary can't be negative: "+salary;
+        return "Salary can't be negative: " + salary;
     }
 }
