@@ -11,14 +11,13 @@ import java.util.Scanner;
 public class StaffPatientTest {
 
     public static void main(String[] args) {
-//TODO: create exception
         Scanner s = new Scanner(System.in);
         s.useDelimiter("\n");
 
-        ArrayList<Doctor> doctors=new ArrayList<>();
-        ArrayList<Patient> patients=new ArrayList<>();
-        ArrayList<LaboratoryWorker> labWorkers=new ArrayList<>();
-        ArrayList<Orderly> orderlies=new ArrayList<>();
+        ArrayList<Doctor> doctors = new ArrayList<>();
+        ArrayList<Patient> patients = new ArrayList<>();
+        ArrayList<LaboratoryWorker> labWorkers = new ArrayList<>();
+        ArrayList<Orderly> orderlies = new ArrayList<>();
 
         String path = "src//files//";
         String doctorFileName = "doctors.txt";
@@ -51,16 +50,16 @@ public class StaffPatientTest {
             int command = s.nextInt();
             switch (command) {
                 case 1:
-                    DoctorService.workWithDoctors(s,doctorFilePath,doctors);
+                    DoctorService.workWithDoctors(s, doctorFilePath, doctors);
                     break;
                 case 2:
-                    LaboratoryWorkerService.workWithLabWorkers(s,labWorkerFilePath,labWorkers);
+                    LaboratoryWorkerService.workWithLabWorkers(s, labWorkerFilePath, labWorkers);
                     break;
                 case 3:
-                    OrderlyService.workWithOrderlies(s,orderlyFilePath,orderlies);
+                    OrderlyService.workWithOrderlies(s, orderlyFilePath, orderlies);
                     break;
                 case 4:
-                    PatientService.workWithPatients(s,patientFilePath,patients);
+                    PatientService.workWithPatients(s, patientFilePath, patients);
                     break;
                 case 5:
                     isMenuActive = false;
@@ -71,5 +70,4 @@ public class StaffPatientTest {
             }
         }
     }
-
 }

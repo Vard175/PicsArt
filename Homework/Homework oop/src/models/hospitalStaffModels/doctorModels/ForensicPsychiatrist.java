@@ -11,6 +11,8 @@ public class ForensicPsychiatrist extends Doctor implements Psychiatrist {
     public ForensicPsychiatrist(String name, String surname, int age, char gender) {
         super(name, surname, age, gender);
     }
+    public ForensicPsychiatrist(){}
+
 
     @Override
     public void observePatient(String path, Patient patient) {

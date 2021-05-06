@@ -17,32 +17,35 @@ public class DoctorService {
         boolean isMenuActive = true;
         while (isMenuActive) {
             System.out.println("Enter command number");
-            System.out.println("1. Add doctor(manual)");
-            System.out.println("2. Add doctor(automate generation)");
-            System.out.println("3. Print names of all cardiologists");
-            System.out.println("4. Print all doctor's surnames  who are head of department");
-            System.out.println("5. Print oldest doctor");
-            System.out.println("6. Work with specific doctor");
-            System.out.println("7. Exit");
+            System.out.println("1. Add doctor");
+            System.out.println("2. Print names of all cardiologists");
+            System.out.println("3. Print all doctor's surnames  who are head of department");
+            System.out.println("4. Print oldest doctor");
+            System.out.println("5. Work with specific doctor");
+            System.out.println("6. Exit");
 
             int command = s.nextInt();
             switch (command) {
                 case 1:
                     getManualInput(s, path, doctors);
                     break;
-                case 2: //TODO: create read from file
-                    break;
-                case 3:
+                case 2:
+                    FileService.write(path, "\n\n3. Print names of all cardiologists");
                     printCardiologistsNames(path, doctors);
                     break;
-                case 4:
+                case 3:
+                    FileService.write(path, "\n\n4. Print all doctor's surnames  who are head of department");
                     printHeadDoctorsSurnames(path, doctors);
                     break;
-                case 5:
+                case 4:
+                    FileService.write(path, "\n\n5. Print oldest doctor");
                     printOldestDoctor(path, doctors);
                     break;
-                case 6:
-                    System.out.println("Enter name of the doctor you want to work with");
+                case 5:
+                    System.out.println("Type name of the doctor you want to work with");
+                    for (Doctor d : doctors) {
+                        System.out.printf("\t" + d.getName());
+                    }
                     String name = s.next();
                     boolean isGivenNameExist = false;
                     for (Doctor doctor : doctors) {
@@ -55,9 +58,9 @@ public class DoctorService {
                     if (!isGivenNameExist)
                         FileService.write(path, "\n" + "There is no doctor with given name.");
                     break;
-                case 7:
+                case 6:
                     isMenuActive = false;
-                    System.out.println("Chao");
+                    System.out.println("--------------------------------\n*Going back to the last menu*");
                     break;
                 default:
                     System.out.println("Invalid command number");
@@ -90,7 +93,7 @@ public class DoctorService {
         sb.append(s.next());
         sb.append(",");
         System.out.println("Is doctor a head of department (y/n)");
-        sb.append(s.next() == "y");
+        sb.append(s.next().equals("y"));
 
         createDoctor(sb.toString(), path, doctors);
     }
@@ -122,7 +125,7 @@ public class DoctorService {
         }
         doctors.get(doctors.size() - 1).setDepartmentName(info[5]);
         doctors.get(doctors.size() - 1).setSalary(Integer.parseInt(info[6]));
-        doctors.get(doctors.size() - 1).setHeadDoctor(info[7] == "true");
+        doctors.get(doctors.size() - 1).setHeadDoctor(info[7].equals("true"));
 
         doctors.get(doctors.size() - 1).printInfo(path);
     }
@@ -147,6 +150,7 @@ public class DoctorService {
     }
 
     public static void workWithOneDoctor(Scanner s, String path, Doctor doctor) {
+        FileService.write(path, "\n\nNow we are working with" + doctor.getName());
 
         boolean isMenuActive = true;
         while (isMenuActive) {
@@ -168,7 +172,8 @@ public class DoctorService {
                     doctor.getPromoted(path);
                     break;
                 case 3:
-                    doctor.interact(path, new Patient());
+                    Patient p = null;
+                    doctor.interact(path, p);
                     break;
                 case 4:
                     doctor.interact(path, new Cardiologist());
@@ -181,13 +186,12 @@ public class DoctorService {
                     break;
                 case 7:
                     isMenuActive = false;
-                    System.out.println("Chao");
+                    System.out.println("--------------------------------\n*Going back to the last menu*");
                     break;
                 default:
                     System.out.println("Invalid command number");
             }
         }
     }
-
 }
 

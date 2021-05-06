@@ -12,6 +12,7 @@ public class ChildPsychiatrist extends Doctor implements Psychiatrist {
     public ChildPsychiatrist(String name, String surname, int age, char gender) {
         super(name, surname, age, gender);
     }
+    public ChildPsychiatrist(){}
 
     @Override
     public void observePatient(String path, Patient patient) {

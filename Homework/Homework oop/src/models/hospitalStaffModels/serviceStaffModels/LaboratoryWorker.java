@@ -15,7 +15,7 @@ public class LaboratoryWorker extends Staff {
     public LaboratoryWorker(){}
 
     public String testBlood() {
-        return "We will send your results by e-mail (Жиза :D )";
+        return "\nWe will send your results by e-mail (Жиза :D )";
     }
 
     @Override
@@ -33,7 +33,6 @@ public class LaboratoryWorker extends Staff {
 
     @Override
     public void getPromoted(String path) {
-        //TODO:
         FileService.write(path, "\nI've got promoted");
     }
 }

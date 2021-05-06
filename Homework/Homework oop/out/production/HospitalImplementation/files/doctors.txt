@@ -1,0 +1,55 @@
+
+------------------
+ Name: Aram
+ Surname: Meliqyan
+ Age: 45
+ Gender: male
+ Salary: 4569
+ Department: cardiology
+ Is Head Doctor: No
+------------------
+ Name: Anna
+ Surname: Gasparyan
+ Age: 56
+ Gender: female
+ Salary: 458
+ Department: Psychiatry
+ Is Head Doctor: Yes
+------------------
+ Name: Karen
+ Surname: Dalaqyan
+ Age: 68
+ Gender: male
+ Salary: 4562
+ Department: ONcology
+ Is Head Doctor: Yes
+
+3. Print names of all cardiologists
+Aram
+
+4. Print all doctor's surnames  who are head of department
+Gasparyan
+Dalaqyan
+
+5. Print oldest doctor
+------------------
+ Name: Karen
+ Surname: Dalaqyan
+ Age: 68
+ Gender: male
+ Salary: 4562
+ Department: ONcology
+ Is Head Doctor: Yes
+------------------
+ Name: Karen
+ Surname: Dalaqyan
+ Age: 68
+ Gender: male
+ Salary: 4562
+ Department: ONcology
+ Is Head Doctor: Yes
+Thank you for promotion
+Thank you,now I'm a head of my department
+*tells doctor specific jokes *
+Send me analyze results as soon as possible
+Get prepared for monitoring the patient

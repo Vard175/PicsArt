@@ -2,8 +2,6 @@ package models.patientModels;
 
 import services.FileService;
 
-import java.util.Scanner;
-
 public class MedicalCard {
     private Disease disease;
     private boolean isFeelingGood;

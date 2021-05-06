@@ -10,11 +10,12 @@ public class Oncologist extends Doctor {
     public Oncologist(String name, String surname, int age, char gender) {
         super(name, surname, age, gender);
     }
+    public Oncologist(){}
 
     @Override
     public void observePatient(String path, Patient patient) {
         if (!isNull(patient))
-            if (patient.getMedicalCard().getDisease().getSymptoms().contains("chest pain"))
+            if (patient.getMedicalCard().getDisease().getSymptoms().contains("unusual bleeding"))
                 FileService.write(path, "\n" + "You might have cancer");
             else
                 super.observePatient(path, patient);

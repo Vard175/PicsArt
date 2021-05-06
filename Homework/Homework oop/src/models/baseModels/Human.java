@@ -3,7 +3,6 @@ package models.baseModels;
 import exceptions.*;
 import services.FileService;
 
-//TODO: question: where to write constructors getters setters functions..any better practices ?
 public abstract class Human implements Comparable<Human> {
     private String name;
     private String surname;
@@ -19,7 +18,6 @@ public abstract class Human implements Comparable<Human> {
         FileService.write(path, "\n Age: " + getAge());
         String gen = getGender() == 'm' ? "male" : "female";
         FileService.write(path, "\n Gender: " + gen);
-        FileService.write(path, "\n------------------");
     }
 
     public Human(String name, String surname, int age, char gender) {
@@ -65,9 +63,10 @@ public abstract class Human implements Comparable<Human> {
     }
 
     public void setGender(char gender) {
-        if (gender != 'm' && gender != 'f')
+        String g= String.valueOf(gender).toLowerCase();
+        if (g != "m" && g != "f")
             throw new GenderException();
-        this.gender = gender;
+        this.gender = g.charAt(0);
     }
 
     @Override

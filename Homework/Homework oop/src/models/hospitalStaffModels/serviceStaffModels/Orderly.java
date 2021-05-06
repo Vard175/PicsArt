@@ -17,7 +17,7 @@ public class Orderly extends Staff {
         if (human instanceof Doctor) {
             FileService.write(path, "\nShould I prepare patient now or later ?");
         } else if (human instanceof Patient) {
-            FileService.write(path, "\nI would help you to prepare fpr monitoring");
+            FileService.write(path, "\nI would help you to prepare for monitoring");
         } else if (human instanceof LaboratoryWorker) {
             FileService.write(path, "\nDo you have any flasks to be cleaned?");
         } else if (human instanceof Orderly) {

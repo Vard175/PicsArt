@@ -6,19 +6,18 @@ import models.patientModels.Patient;
 import services.FileService;
 
 public abstract class Doctor extends Staff {
-    //TODO: check doctors methods
 
     private String departmentName;
     private boolean isHeadDoctor;
 
     @Override
     public void getPromoted(String path) {
-        //TODO: write in file
         if (isHeadDoctor)
             FileService.write(path, "\nThank you for promotion");
-        else
+        else {
             setHeadDoctor(true);
-        FileService.write(path, "\nThank you,now I'm a head of my department");
+            FileService.write(path, "\nThank you,now I'm a head of my department");
+        }
     }
 
     @Override
@@ -54,7 +53,7 @@ public abstract class Doctor extends Staff {
     }
 
     public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
+        this.departmentName = departmentName.toLowerCase();
     }
 
     public boolean isHeadDoctor() {
@@ -68,6 +67,8 @@ public abstract class Doctor extends Staff {
     public Doctor(String name, String surname, int age, char gender) {
         super(name, surname, age, gender);
     }
-    public Doctor(){}
+
+    public Doctor() {
+    }
 
 }

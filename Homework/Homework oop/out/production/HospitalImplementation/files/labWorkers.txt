@@ -1,0 +1,32 @@
+
+------------------
+ Name: Zarine
+ Surname: Babayan
+ Age: 45
+ Gender: female
+ Salary: 0
+------------------
+ Name: Vlad
+ Surname: Vladyan
+ Age: 65
+ Gender: male
+ Salary: 0
+------------------
+ Name: Lilit
+ Surname: Nazaryan
+ Age: 26
+ Gender: female
+ Salary: 0
+
+3. Print names of all male laboratory workers
+Vlad
+------------------
+ Name: Lilit
+ Surname: Nazaryan
+ Age: 26
+ Gender: female
+ Salary: 0
+We will send your results by e-mail (Жиза :D )
+I've got promoted
+Here are test results
+Clean these flasks,please. 
