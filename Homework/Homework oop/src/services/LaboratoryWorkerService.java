@@ -4,7 +4,9 @@ import models.hospitalStaffModels.doctorModels.Cardiologist;
 import models.hospitalStaffModels.serviceStaffModels.LaboratoryWorker;
 import models.hospitalStaffModels.serviceStaffModels.Orderly;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class LaboratoryWorkerService {
@@ -13,10 +15,11 @@ public class LaboratoryWorkerService {
         boolean isMenuActive = true;
         while (isMenuActive) {
             System.out.println("Enter command number");
-            System.out.println("1. Add laboratory worker");
-            System.out.println("2. Print names of all male laboratory workers");
-            System.out.println("3. Work with specific laboratory worker");
-            System.out.println("4. Exit");
+            System.out.println("1. Add laboratory worker(manual input)");
+            System.out.println("2. Add laboratory worker(automated input)");
+            System.out.println("3. Print names of all male laboratory workers");
+            System.out.println("4. Work with specific laboratory worker");
+            System.out.println("5. Exit");
 
             int command = s.nextInt();
             switch (command) {
@@ -24,10 +27,13 @@ public class LaboratoryWorkerService {
                     getManualInput(s, path, labWorkers);
                     break;
                 case 2:
+                    getAutomateInput(path, labWorkers);
+                    break;
+                case 3:
                     FileService.write(path, "\n\n3. Print names of all male laboratory workers");
                     printAllMaleLabWorkersNames(path, labWorkers);
                     break;
-                case 3:
+                case 4:
                     System.out.println("Enter name of the laboratory worker you want to work with");
                     for (LaboratoryWorker lb : labWorkers) {
                         System.out.printf("\t" + lb.getName());
@@ -44,7 +50,7 @@ public class LaboratoryWorkerService {
                     if (!isGivenNameExist)
                         FileService.write(path, "\n" + "There is no laboratory worker with given name.");
                     break;
-                case 4:
+                case 5:
                     isMenuActive = false;
                     System.out.println("--------------------------------\n*Going back to the last menu*");
                     break;
@@ -73,6 +79,20 @@ public class LaboratoryWorkerService {
 
 
         createLabWorker(sb.toString(), path, laboratoryWorkers);
+    }
+
+    public static void getAutomateInput(String path, ArrayList<LaboratoryWorker> laboratoryWorkers) {
+        String inputPath = "src//inputFiles//labWorkerInput.txt//";
+        List<String> input = null;
+        try {
+            input = FileService.read(inputPath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for (String labWorkerInfo : input) {
+            createLabWorker(labWorkerInfo, path, laboratoryWorkers);
+        }
     }
 
     public static void createLabWorker(String information, String path, ArrayList<LaboratoryWorker> laboratoryWorkers) {

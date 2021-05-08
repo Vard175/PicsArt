@@ -1,0 +1,7 @@
+Arthur,Hakobyan,48,m,1,Cardiology,45896,y
+Miriam,Hocking,60,f,2,Psychiatry,785,n
+Antony,Smith,56,m,4,Surgery,89562,y
+Jhon,Snow,45,m,3,Psychiatry,8956,n
+Joseph,Tribiani,29,m,6,oncology,865,n
+Marine,Balasanyan,37,f,5,Surgery,89663,n
+Drake,Ramorey,31,m,5,Surgery,8895,n

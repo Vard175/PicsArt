@@ -64,7 +64,7 @@ public abstract class Human implements Comparable<Human> {
 
     public void setGender(char gender) {
         String g= String.valueOf(gender).toLowerCase();
-        if (g != "m" && g != "f")
+        if (!(g.equals("m")  || g.equals("f")))
             throw new GenderException();
         this.gender = g.charAt(0);
     }

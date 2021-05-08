@@ -1,0 +1,4 @@
+Hasmik,Balasanyan,45,f,454
+Hrant,Matevosyan,52,m,100
+Anahit,Galstanyan,65,f,458
+Aram,Gasparyan,55,m,126

@@ -6,6 +6,7 @@ import services.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class StaffPatientTest {
@@ -19,7 +20,7 @@ public class StaffPatientTest {
         ArrayList<LaboratoryWorker> labWorkers = new ArrayList<>();
         ArrayList<Orderly> orderlies = new ArrayList<>();
 
-        String path = "src//files//";
+        String path = "outputFiles//";
         String doctorFileName = "doctors.txt";
         String labWorkerFileName = "labWorkers.txt";
         String orderlyFileName = "orderlies.txt";
@@ -34,6 +35,14 @@ public class StaffPatientTest {
             FileService.createFile(path, labWorkerFileName);
             FileService.createFile(path, orderlyFileName);
             FileService.createFile(path, patientFileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String inputPath = "src//inputFiles//doctorInput.txt//";
+        List<String> input = null;
+        try {
+            var input1=FileService.read(inputPath);
         } catch (IOException e) {
             e.printStackTrace();
         }

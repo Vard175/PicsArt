@@ -7,8 +7,10 @@ import models.hospitalStaffModels.serviceStaffModels.LaboratoryWorker;
 import models.hospitalStaffModels.serviceStaffModels.Orderly;
 import models.patientModels.Patient;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 public class DoctorService {
@@ -17,12 +19,13 @@ public class DoctorService {
         boolean isMenuActive = true;
         while (isMenuActive) {
             System.out.println("Enter command number");
-            System.out.println("1. Add doctor");
-            System.out.println("2. Print names of all cardiologists");
-            System.out.println("3. Print all doctor's surnames  who are head of department");
-            System.out.println("4. Print oldest doctor");
-            System.out.println("5. Work with specific doctor");
-            System.out.println("6. Exit");
+            System.out.println("1. Add doctor(manual input)");
+            System.out.println("2. Add doctor(automate input)");
+            System.out.println("3. Print names of all cardiologists");
+            System.out.println("4. Print all doctor's surnames  who are head of department");
+            System.out.println("5. Print oldest doctor");
+            System.out.println("6. Work with specific doctor");
+            System.out.println("7. Exit");
 
             int command = s.nextInt();
             switch (command) {
@@ -30,18 +33,21 @@ public class DoctorService {
                     getManualInput(s, path, doctors);
                     break;
                 case 2:
+                    getAutomateInput(path, doctors);
+                    break;
+                case 3:
                     FileService.write(path, "\n\n3. Print names of all cardiologists");
                     printCardiologistsNames(path, doctors);
                     break;
-                case 3:
+                case 4:
                     FileService.write(path, "\n\n4. Print all doctor's surnames  who are head of department");
                     printHeadDoctorsSurnames(path, doctors);
                     break;
-                case 4:
+                case 5:
                     FileService.write(path, "\n\n5. Print oldest doctor");
                     printOldestDoctor(path, doctors);
                     break;
-                case 5:
+                case 6:
                     System.out.println("Type name of the doctor you want to work with");
                     for (Doctor d : doctors) {
                         System.out.printf("\t" + d.getName());
@@ -58,7 +64,7 @@ public class DoctorService {
                     if (!isGivenNameExist)
                         FileService.write(path, "\n" + "There is no doctor with given name.");
                     break;
-                case 6:
+                case 7:
                     isMenuActive = false;
                     System.out.println("--------------------------------\n*Going back to the last menu*");
                     break;
@@ -96,6 +102,20 @@ public class DoctorService {
         sb.append(s.next().equals("y"));
 
         createDoctor(sb.toString(), path, doctors);
+    }
+
+    public static void getAutomateInput(String path, ArrayList<Doctor> doctors) {
+        String inputPath = "src//inputFiles//doctorInput.txt//";
+        List<String> input = null;
+        try {
+            input = FileService.read(inputPath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for (String doctorInfo : input) {
+            createDoctor(doctorInfo, path, doctors);
+        }
     }
 
     public static void createDoctor(String information, String path, ArrayList<Doctor> doctors) {

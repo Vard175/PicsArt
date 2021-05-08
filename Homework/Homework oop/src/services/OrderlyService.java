@@ -4,7 +4,9 @@ import models.hospitalStaffModels.doctorModels.Cardiologist;
 import models.hospitalStaffModels.serviceStaffModels.Orderly;
 import models.patientModels.Patient;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class OrderlyService {
@@ -12,10 +14,11 @@ public class OrderlyService {
         boolean isMenuActive = true;
         while (isMenuActive) {
             System.out.println("Enter command number");
-            System.out.println("1. Add orderly");
-            System.out.println("2. Print names of all female orderlies");
-            System.out.println("3. Work with specific orderly");
-            System.out.println("4. Exit");
+            System.out.println("1. Add orderly(manual input)");
+            System.out.println("2. Add orderly(automate input)");
+            System.out.println("3. Print names of all female orderlies");
+            System.out.println("4. Work with specific orderly");
+            System.out.println("5. Exit");
 
             int command = s.nextInt();
             switch (command) {
@@ -23,13 +26,16 @@ public class OrderlyService {
                     getManualInput(s, path, orderlies);
                     break;
                 case 2:
+                    getAutomateInput(path, orderlies);
+                    break;
+                case 3:
                     FileService.write(path, "\n\n3. Print names of all female orderlies");
                     printAllFemaleOrderliesNames(path, orderlies);
                     break;
-                case 3:
+                case 4:
                     System.out.println("Enter name of the orderly you want to work with");
-                    for (Orderly o:orderlies) {
-                        System.out.printf("\t"+o.getName());
+                    for (Orderly o : orderlies) {
+                        System.out.printf("\t" + o.getName());
                     }
                     String name = s.next();
                     boolean isGivenNameExist = false;
@@ -43,7 +49,7 @@ public class OrderlyService {
                     if (!isGivenNameExist)
                         FileService.write(path, "\n" + "There is no orderly with given name.");
                     break;
-                case 4:
+                case 5:
                     isMenuActive = false;
                     System.out.println("--------------------------------\n*Going back to the last menu*");
                     break;
@@ -71,6 +77,20 @@ public class OrderlyService {
         sb.append(s.next());
 
         createOrderly(sb.toString(), path, orderlies);
+    }
+
+    public static void getAutomateInput(String path, ArrayList<Orderly> orderlies) {
+        String inputPath = "src//inputFiles//orderlyInput.txt//";
+        List<String> input = null;
+        try {
+            input = FileService.read(inputPath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for (String orderlyInfo : input) {
+            createOrderly(orderlyInfo, path, orderlies);
+        }
     }
 
     public static void createOrderly(String information, String path, ArrayList<Orderly> orderlies) {

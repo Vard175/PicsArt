@@ -1,0 +1,4 @@
+Mane,Balasanyan,45,f,458
+Karapet,Matevosyan,69,m,123
+Mari,Xachatryan,26,f,458
+Albert,Hovakimyan,55,m,89

@@ -1,0 +1,5 @@
+operation,yes,stomach problem,unusual bleeding
+aspirin,no,depression,self harm,sleep problems
+antidepressants,no,anxiety,self harm,sleep problems
+validol,no,not diagnosed yet,chest pain
+-,yes,arrhythmia,chest pain

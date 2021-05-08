@@ -1,0 +1,5 @@
+Anna,Gevorgyan,45,f,Gevorg Gasparyan
+Ruben,Azatyan,48,m,Anna Meliqyan
+Ani,Tonoyan,12,f,Suren Suvaryan
+Gagik,Tazayan,37,m,Taron Hovsepyan
+Astxik,Ayvazyan,29,f,Karen Hakobyan
