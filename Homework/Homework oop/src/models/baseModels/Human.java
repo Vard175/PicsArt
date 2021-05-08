@@ -34,7 +34,7 @@ public abstract class Human implements Comparable<Human> {
 
     public void setName(String name) {
         if (!name.matches("[A-Z][a-z]+"))
-            throw new NameException();
+            throw new HumanException("Name should start with uppercase and continue with lowers.");
         this.name = name;
     }
 
@@ -44,7 +44,7 @@ public abstract class Human implements Comparable<Human> {
 
     public void setSurname(String surname) {
         if (!surname.matches("[A-Z][a-z]+"))
-            throw new SurnameException();
+            throw new HumanException("Surname should start with uppercase and continue with lowers.");
         this.surname = surname;
     }
 
@@ -54,7 +54,7 @@ public abstract class Human implements Comparable<Human> {
 
     public void setAge(int age) {
         if (age < 0)
-            throw new AgeException(age);
+            throw new HumanException("Age can't be negative.");
         this.age = age;
     }
 
@@ -65,7 +65,7 @@ public abstract class Human implements Comparable<Human> {
     public void setGender(char gender) {
         String g= String.valueOf(gender).toLowerCase();
         if (!(g.equals("m")  || g.equals("f")))
-            throw new GenderException();
+            throw new HumanException("Gender should be male or female.");
         this.gender = g.charAt(0);
     }
 
