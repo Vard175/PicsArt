@@ -5,6 +5,8 @@ public class Car {
     private int year;
 
     public Car() {
+        setModel("ford");
+        setYear(2005);
     }
 
     public Car(String model, int year) {

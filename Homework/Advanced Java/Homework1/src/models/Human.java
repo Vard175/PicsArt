@@ -13,6 +13,9 @@ public class Human {
     private Car car;
 
     public Human() {
+        setName("Alice");
+        setAge(45);
+        setCar(new Car());
     }
 
     public Human(String name, int age, Car car) {
