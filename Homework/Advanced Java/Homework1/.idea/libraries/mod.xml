@@ -1,0 +1,20 @@
+<component name="libraryTable">
+  <library name="mod">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/jaxb-ri-3.0.0 (1)/jaxb-ri/mod/jakarta.activation.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jaxb-ri-3.0.0 (1)/jaxb-ri/mod/jakarta.xml.bind-api.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jaxb-ri-3.0.0 (1)/jaxb-ri/mod/jaxb-core.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jaxb-ri-3.0.0 (1)/jaxb-ri/mod/jaxb-impl.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jaxb-ri-3.0.0 (1)/jaxb-ri/mod/jaxb-jxc.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jaxb-ri-3.0.0 (1)/jaxb-ri/mod/jaxb-xjc.jar!/" />
+      <root url="file://$USER_HOME$/Downloads/jaxb-ri-3.0.0 (1)/jaxb-ri/mod" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Downloads/jaxb-ri-3.0.0 (1)/jaxb-ri/mod/jaxb-xjc.jar!/" />
+      <root url="file://$USER_HOME$/Downloads/jaxb-ri-3.0.0 (1)/jaxb-ri/mod" />
+    </SOURCES>
+    <jarDirectory url="file://$USER_HOME$/Downloads/jaxb-ri-3.0.0 (1)/jaxb-ri/mod" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/Downloads/jaxb-ri-3.0.0 (1)/jaxb-ri/mod" recursive="false" type="SOURCES" />
+  </library>
+</component>
