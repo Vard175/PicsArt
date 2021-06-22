@@ -1,3 +1,5 @@
+package models;
+
 public class Timer {
     private int hours;
     private int minutes;
