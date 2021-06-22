@@ -1,3 +1,7 @@
+package services;
+
+import gui.FolderSizeGui;
+
 import java.io.File;
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;

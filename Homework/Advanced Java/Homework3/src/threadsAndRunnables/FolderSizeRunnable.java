@@ -1,3 +1,8 @@
+package threadsAndRunnables;
+
+import gui.FolderSizeGui;
+import services.FolderSizeService;
+
 import java.io.File;
 
 public class FolderSizeRunnable implements Runnable {

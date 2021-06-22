@@ -1,3 +1,8 @@
+package gui;
+
+import model.Folder;
+import threadsAndRunnables.FolderSizeRunnable;
+
 import javax.swing.*;
 import java.awt.*;
 

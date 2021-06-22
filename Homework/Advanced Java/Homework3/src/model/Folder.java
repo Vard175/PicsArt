@@ -1,3 +1,5 @@
+package model;
+
 public class Folder {
     private String path;
     private long size;
