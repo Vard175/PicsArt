@@ -60,6 +60,7 @@ public class TimerGui {
 
     private void addButtons() {
         startButton.addActionListener(e -> {
+            startButton.setEnabled(false);
             String[] input = timerInputTextField.getText().split(":");
             timer = new Timer(input[0], input[1], input[2]);
             timerThread.start();
